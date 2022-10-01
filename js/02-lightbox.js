@@ -3,18 +3,19 @@ import { galleryItems } from './gallery-items.js';
 
 const gallery = document.querySelector(".gallery");
 
-for (const image of galleryItems) {
-    const images =
-    `<a class="gallery__item" href="${image.original}">
-        <img class="gallery__image" src="${image.preview}" alt="${image.description}" />
-    </a>`;
-    gallery.innerHTML += images;
-};
+gallery.innerHTML = galleryItems
+  .map((image) => {
+    return `
+        <a class = "gallery__item" href= "${image.original}">
+            <img class = "gallery__image" 
+                src = ${image.preview} 
+                alt = "${image.description}">
+         </a>`;
+  }).join('');
 
 gallery.addEventListener("click", (event) => {
     event.preventDefault();
     if (event.target.className !== "gallery__image") {
-        console.log(event.target.className);
         return;
     }
     let lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });

@@ -13,11 +13,5 @@ gallery.innerHTML = galleryItems
          </a>`;
   }).join('');
 
-gallery.addEventListener("click", (event) => {
-    event.preventDefault();
-    if (event.target.className !== "gallery__image") {
-        return;
-    }
-    let lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
-});
+let lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
     
